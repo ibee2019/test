@@ -11,9 +11,10 @@ namespace MyGreeter;
 
 class Client
 {
-    public function getGreeting()
+    public function getGreeting($time = 0)
     {
-        $h = date('H');
+        $h = APP_ENV_PROD ? date('H') :  date('H', (int) $time);
+
         if ($h < 12){
             return 'Good morning';
         }else if($h < 18){
